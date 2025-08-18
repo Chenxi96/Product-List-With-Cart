@@ -20,6 +20,9 @@ window.onload = () => {
                 div.append(price);
                 // Add the div into main element
                 $('main').append(div);
+
+                /* Responsive Design:
+                1. images has to be responsive with picture tag*/
             }
         })
         .catch(error => {
