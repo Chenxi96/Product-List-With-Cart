@@ -4,3 +4,93 @@
 *************************/
 
 /* 1 Default Styles */
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --green: #1EA575;
+    --red: #C73B0F;
+    --rose-900: #260F08;
+    --rose-500: #87635A;
+    --rose-400: #AD8A85;
+    --rose-300: #CAAFA7;
+    --rose-100: #F5EEEC;
+    --rose-50: #FCF8F6;
+}
+
+.text-preset-1 {
+    font-size: 40px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset-2 {
+    font-size: 24px;
+    line-height: 125%;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+
+.text-preset-3 {
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+.text-preset-4{
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0;
+}
+
+.text-preset-5 {
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+body {
+    margin: 0;
+    background-color: var(--rose-50);
+}
+
+.add-cart-btn::before {
+    content: url(../assets/images/icon-add-to-cart.svg);
+}
+
+.add-cart-btn {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    position: relative;
+    top: -28px;
+    left: calc(50% - 73.215px);
+    background-color: var(--white);
+    border: 1px solid var(--rose-400);
+    color: var(--rose-900);
+    border-radius: 999px;
+    padding: 12px 28px;
+}
+
+/* 2. MAIN */
+main {
+    margin: 0 24px;
+}
+
+#cart-container {
+    padding: 24px;
+    margin: 32px 24px 24px 24px;
+    background-color: var(--white);
+    border-radius: 12px;
+}
+
+#cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cart > p {
+    margin: 16px 0;
+}
