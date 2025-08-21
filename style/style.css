@@ -88,6 +88,26 @@ body {
     padding: 12px 28px;
 }
 
+.cart-quantity-btn {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    position: relative;
+    top: -28px;
+    left: calc(50% - 73.215px);
+    background-color: var(--white);
+    border: 1px solid var(--rose-400);
+    color: var(--rose-900);
+    border-radius: 999px;
+    padding: 12px 28px;
+}
+
+.add-cart-btn:hover {
+    color: var(--red);
+    border-color: var(--red);
+    cursor: pointer;
+}
+
 /* 2. MAIN */
 main {
     margin: 0 24px;
