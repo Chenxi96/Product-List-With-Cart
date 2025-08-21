@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "RedHatText";
+    src: url(/assets/fonts/RedHatText-VariableFont_wght.ttf);
+}
+
 /************************
 * 1. Default Styles
 * 2. MAIN
@@ -21,6 +26,7 @@
     font-size: 40px;
     line-height: 120%;
     letter-spacing: 0;
+    font-weight: 700;
 }
 
 .text-preset-2 {
@@ -41,6 +47,7 @@
     font-size: 14px;
     line-height: 150%;
     letter-spacing: 0;
+    font-weight: 400;
 }
 
 .text-preset-5 {
@@ -48,6 +55,14 @@
     line-height: 150%;
     letter-spacing: 0;
     font-weight: 600;
+}
+
+img {
+    border-radius: 8px;
+}
+
+* {
+    font-family: "RedHatText";
 }
 
 body {
@@ -80,7 +95,6 @@ main {
 
 #cart-container {
     padding: 24px;
-    margin: 32px 24px 24px 24px;
     background-color: var(--white);
     border-radius: 12px;
 }
@@ -91,6 +105,62 @@ main {
     align-items: center;
 }
 
+#cart-container h2 {
+    color: var(--red);
+}
+
 #cart > p {
     margin: 16px 0;
+    color: var(--rose-500);
+}
+
+/* Any div inside the id item div */
+#item > div {
+    max-width: 327px;
+}
+
+#item {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 32px;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px){
+    main {
+        margin: 40px;
+    }
+
+    #item > div {
+        max-width: 213.33px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    main {
+        display: flex;
+        justify-content: center;
+        margin: 88px 112px;
+        column-gap: 32px;
+    }
+
+    #heading-container {
+        width: 800px;
+    }
+
+    #item {
+        width: 800px;
+    }
+
+    #item > div {
+       max-width: 250.67px;
+    }
+
+    #cart-container {
+        margin: 0;
+        width: 100%;
+        max-width: 384px;
+        height: min-content;
+    }
 }
