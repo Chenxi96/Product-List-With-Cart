@@ -76,6 +76,7 @@ body {
 
 .add-cart-btn {
     display: flex;
+    justify-content: center;
     align-items: center;
     column-gap: 8px;
     position: relative;
@@ -85,21 +86,24 @@ body {
     border: 1px solid var(--rose-400);
     color: var(--rose-900);
     border-radius: 999px;
-    padding: 12px 28px;
+    width: 160px;
+    height: 44px;
 }
 
 .cart-quantity-btn {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
     column-gap: 8px;
     position: relative;
     top: -28px;
     left: calc(50% - 73.215px);
-    background-color: var(--white);
+    background-color: var(--red);
     border: 1px solid var(--rose-400);
     color: var(--rose-900);
     border-radius: 999px;
-    padding: 12px 28px;
+    width: 160px;
+    height: 44px;
 }
 
 .add-cart-btn:hover {
@@ -107,6 +111,31 @@ body {
     border-color: var(--red);
     cursor: pointer;
 }
+
+.increment {
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    padding: 4px;
+}
+
+.increment:hover, .increment:hover path{
+    background-color: var(--white);
+    fill: var(--red);
+    cursor: pointer;
+}
+
+.decrement {
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    padding: 8px 4px;
+}
+
+.decrement:hover, .decrement:hover path {
+    background-color: var(--white);
+    fill: var(--red);
+    cursor: pointer;
+}
+
 
 /* 2. MAIN */
 main {

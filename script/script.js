@@ -39,17 +39,33 @@ window.onload = () => {
 
 
     function clicking() {
-        const div = $('.product-item button') // Selects div's button
+        const div = $('.product-item button'); // Selects div's button
         // Loops through div buttons
         for(let i=0; i<div.length; i++) {
             div[i].onclick = function() {
+                const button = $(this);
+                // Add increment button
+                const increment = $('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="#fff" d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"/></svg>')
+                .addClass('increment');
+                // Add decrement button
+                const decrement = $('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="2" fill="none" viewBox="0 0 10 2"><path fill="#fff" d="M0 .375h10v1.25H0V.375Z"/></svg>')
+                .addClass('decrement');
+                // Add span with text color white
+                const amount = $('<span>1</span>').attr('style', 'color: white;')
+                button.text("");
+                button.append(decrement);
+                button.append(amount);
+                button.append(increment);
                 // Toggles the class add cart button and cart quantity button
-                $(this).toggleClass('add-cart-btn');
-                $(this).toggleClass('cart-quantity-btn')
+                button.removeClass('add-cart-btn');
+                button.addClass('cart-quantity-btn');
             }
         }
-
     }
+
+
+
+   
 
     async function main() {
         const data = await fetchData();
