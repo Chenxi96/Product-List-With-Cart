@@ -46,12 +46,16 @@ window.onload = () => {
             button[i].onclick = function() {
                 // Add span with text color white
                 const amount = $('<span>1</span>').attr({style: 'color: white;', id: 'quantity'});
-                console.log(amount.text())
-                const button = $(this);
+
+                const button = $(this).on('click', addToCart(div[i], amount.text()));
                 // Add increment button
                 const increment = $('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="#fff" d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"/></svg>')
                 .addClass('increment')
-                .on('click', addToCart(div[i], amount.text())); // when adding quantity run addToCart function with div element and the quantity amount
+                .on('click', function(event) {
+                    event.stopPropagation();
+                    const number = amount.text(parseInt(amount.text()) + 1)
+                    addToCart(div[i], number.text())
+                }) // when adding quantity run addToCart function with div element and the quantity amount
                 // Add decrement button
                 const decrement = $('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="2" fill="none" viewBox="0 0 10 2"><path fill="#fff" d="M0 .375h10v1.25H0V.375Z"/></svg>')
                 .addClass('decrement')
@@ -68,6 +72,7 @@ window.onload = () => {
     }
 
     function addToCart(item, quantity) {
+        console.log(quantity)
         // select item name and price
         const itemName = $(item).find('#itemName').text();
         const itemPrice = $(item).find('#itemPrice').text();
@@ -75,48 +80,59 @@ window.onload = () => {
         const div = $('<div></div>').attr('id', itemName);
         
         // Title of item
-        const title = $('<p></p>').text(itemName).attr('id', itemName);
+        const title = $('<p></p>').text(itemName).attr({id: itemName, style: 'margin: 0;'});
 
         // container for the span elements
-        const itemDetail = $('<p></p>');
-        const currentItemPrice = $('<span></span>').text(`${itemPrice}`);
-        const amount = $('<span></span>').text(`${quantity}x`);
-        const totalPrice = $('<span></span>').text(`$${(parseInt(itemPrice.slice(1)) * quantity).toFixed(2)}`); // Item's price * quantity
+        const divWrapper = $('<div></div>').addClass('wrapper')
+        const itemDetail = $('<p></p>').attr('class', 'cartDescription');
+
+        // Span color and style for the item price
+        const currentItemPrice = $('<span></span>').text(`@ ${itemPrice}`).attr({id: `currentPrice-${itemName}`, class: 'text-preset-4', style: 'color: var(--rose-500)'});
+
+        // span color and style for the amount
+        const amount = $('<span></span>').text(`${quantity}x`).attr({id: `amount-${itemName}`, style: 'color: var(--red);', class: 'text-preset-4'});
+
+        const totalPrice = $('<span></span>').text(`$${(parseInt(itemPrice.slice(1)) * quantity).toFixed(2)}`).attr({id: `totalPrice-${itemName}`, class: 'text-preset-5', style: 'color: var(--rose-500)'}); // Item's price * quantity
+        const deleteButton = $('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="#CAAFA7" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>')
+        .addClass('deleteButton');
+    
 
         // select cart div
         const cart = $('#cart');
 
         console.log((cart.find(`div[id="${itemName}"]`)[0]), itemName)
+
+        if(cart.find('div').length < 1) {
+            // Remove image and p
+            cart.empty();
+        }
         
         // if there's a div with the item name
         if((cart.find(`div[id="${itemName}"]`).length > 0)) {
-            
-            // Add spans into itemDetail paragraph
-            itemDetail.text(amount);
-            itemDetail.text(currentItemPrice);
-            itemDetail.text(totalPrice);
 
-        } else { // If there isn't
-            // Remove image and p
-            cart.empty();
-            
+            // Add spans into itemDetail paragraph
+            $(`[id="amount-${itemName}"]`).text(`${quantity}`);
+            $(`[id="currentPrice-${itemName}"]`).text(`@${itemPrice}`);
+            $(`[id="totalPrice-${itemName}"]`).text(`$${(parseInt(itemPrice.slice(1)) * quantity).toFixed(2)}`);
+
+        } else { // If there isn't a div with item name
+            cart.removeClass('cart')
             // Add spans into itemDetail paragraph
             itemDetail.append(amount);
             itemDetail.append(currentItemPrice);
             itemDetail.append(totalPrice);
+
+            // Add all elements into div wrapper
+            divWrapper.append(itemDetail);
+            divWrapper.append(deleteButton);
             
             // Add into div
             div.append(title);
-            div.append(itemDetail);
+            div.append(divWrapper);
             
             // Add div item to cart
             cart.append(div);
-            console.log()
         }
-
-        
-
-       
         
     }
 

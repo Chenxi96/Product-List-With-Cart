@@ -136,11 +136,33 @@ body {
     cursor: pointer;
 }
 
+.deleteButton {
+    border-radius: 50%;
+    border: 1px solid var(--rose-400);
+    cursor: pointer;
+    padding: 4px;
+
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rose-100);
+}
+
+.cartDescription {
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 0;
+}
+
 
 /* 2. MAIN */
 main {
     margin: 0 24px;
 }
+
 
 #cart-container {
     padding: 24px;
@@ -148,7 +170,7 @@ main {
     border-radius: 12px;
 }
 
-#cart {
+.cart {
     display: flex;
     flex-direction: column;
     align-items: center;
