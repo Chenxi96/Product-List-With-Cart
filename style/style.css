@@ -148,7 +148,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--rose-100);
+    /* border-bottom: 1px solid var(--rose-100); */
 }
 
 .cartDescription {
@@ -196,6 +196,20 @@ main {
     column-gap: 24px;
     row-gap: 32px;
     justify-content: center;
+}
+
+.confirmButton {
+    background-color: var(--red);
+    color: var(--white);
+    width: 100%;
+    height: 53px;
+    border-radius: 999px;
+    border: none;
+}
+
+.orderTotalContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (min-width: 768px){
