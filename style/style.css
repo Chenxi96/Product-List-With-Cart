@@ -198,6 +198,11 @@ main {
     justify-content: center;
 }
 
+#deliveryComment::before {
+    content: url('../assets/images/icon-carbon-neutral.svg');
+    margin: 0 0.5px 24px 0;
+}
+
 .confirmButton {
     background-color: var(--red);
     color: var(--white);
@@ -210,6 +215,16 @@ main {
 .orderTotalContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.orderSubmitContainer::before {
+    content: url(../assets/images/icon-order-confirmed.svg);
+}
+
+.orderSubmitContainer {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
 }
 
 @media screen and (min-width: 768px){
