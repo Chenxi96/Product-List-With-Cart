@@ -65,6 +65,10 @@ img {
     font-family: "RedHatText";
 }
 
+h1 {
+    margin: 24px 0 32px 0;
+}
+
 body {
     margin: 0;
     background-color: var(--rose-50);
@@ -136,6 +140,11 @@ body {
     cursor: pointer;
 }
 
+.deleteButton:hover, .deleteButton:hover path{
+    border: 1px solid var(--rose-900);
+    fill: var(--rose-900)
+}
+
 .deleteButton {
     border-radius: 50%;
     border: 1px solid var(--rose-400);
@@ -203,6 +212,11 @@ main {
     margin: 0 0.5px 24px 0;
 }
 
+.confirmButton:hover {
+    background-color: #952C0B;
+    cursor: pointer;
+}
+
 .confirmButton {
     background-color: var(--red);
     color: var(--white);
@@ -217,15 +231,32 @@ main {
     justify-content: space-between;
 }
 
-.orderSubmitContainer::before {
-    content: url(../assets/images/icon-order-confirmed.svg);
-}
 
 .orderSubmitContainer {
     display: flex;
-    position: absolute;
-    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    top: 0;
+    left: -1000px;
+    height: 100%;
 }
+
+
+.orderSubmitWrapper::before {
+    content: url(../assets/images/icon-order-confirmed.svg);
+}
+
+.orderSubmitWrapper {
+    background-color: var(--white);
+    max-width: 327px;
+    padding: 40px 24px;
+    margin-top: 95px;
+    border-radius: 12px 12px 0 0;
+    height: 100%;
+}
+
 
 @media screen and (min-width: 768px){
     main {
@@ -234,6 +265,14 @@ main {
 
     #item > div {
         max-width: 213.33px;
+    }
+
+    .orderSubmitWrapper {
+        border-radius: 12px;
+        max-width: 688px;
+        width: 100%;
+        height: min-content;
+        padding: 40px;
     }
 }
 
@@ -262,5 +301,10 @@ main {
         width: 100%;
         max-width: 384px;
         height: min-content;
+    }
+
+    .orderSubmitWrapper {
+        max-width: 592px;
+        width: 100%;
     }
 }
