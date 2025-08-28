@@ -176,9 +176,9 @@ window.onload = () => {
         
         const confirmOrderDiv = $('<div></div>').attr('id', 'itemTotal');
         const orderTotalDiv = $('<div></div>').attr({class: 'orderTotalContainer'});
-        const orderTotal = $('<p>Order Total</p>');
+        const orderTotal = $('<p class="text-preset-4" style="color: var(--rose-900);">Order Total</p>');
         const calculatedTotal = $('<p></p>').attr({id: 'calculatedTotal', class: 'text-preset-2'})
-        const deliveryCommentDiv = $('<div></div>').attr('style', 'display: flex; justify-content: center;');
+        const deliveryCommentDiv = $('<div></div>').attr('style', 'display: flex; justify-content: center; background-color: var(--rose-50); margin: 24px 0; border-radius: 8px;');
         const deliveryComment = $(`<p>This is a <span class=text-preset-5 style=color:var(--rose-900); >carbon-neutral</span> delivery</p>`).attr('id', 'deliveryComment');
         const confirmButton = $('<button>Confirm Order</button>').attr({id: 'submitButton', class: 'confirmButton text-preset-3'});
         
@@ -191,6 +191,9 @@ window.onload = () => {
             event.stopPropagation();
             // When clicked scroll the page to the top
             $(window).scrollTop(0)
+
+            $('body').addClass('modal-open')
+
             // Call the Order detail modal to the page
             submitOrder(cart);
         })
@@ -317,7 +320,7 @@ window.onload = () => {
         // Call function to retrieve json data
         const data = await fetchData();
 
-        // Loop throught the JSON data
+        // Loop through the JSON data
         for(let item of data) {
             console.log(item)
             const cartItem = cart.find(`div[id="${item.name}"]`);
